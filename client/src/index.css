@@ -1,14 +1,88 @@
-html {
-  font-size: 10px;
-  font-family: sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  --primary: #49796f;
+  --secondary: #6b7280;
+  --dark: #191919;
+  --white: #ffffff;
+  --red: #ef4444;
+  --gray: #f0f0f0;
+  --darkGray: #cdcdcd;
 }
 
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
 }
 
-#root {
-  width: 100vw;
-  height: 100vh;
+html,
+body {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: #141414;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+textarea {
+  outline: none;
+  border: none;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  will-change: transform;
+  transition: transform 0.3s ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  transform: none;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+ul {
+  list-style-type: none;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 2.25rem;
+}
+
+.error {
+  font-size: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
 }

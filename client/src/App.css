@@ -1,143 +1,396 @@
-#App {
-  width: 100%;
-  height: 100%;
+/* modal */
+.ReactModal__Overlay {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
-  --primary-color: #1266cc;
-  --secondary-color: #f96400;
-  --flash-color: rgb(89, 255, 0);
-  --gray: #999;
-  --light-gray: #e0e0e0;
-  --dark-gray: #777;
+  background-color: #c8c8c8b9 !important;
+  z-index: 10;
 }
 
-#App .container {
-  width: 40%;
-  min-width: 60rem;
-  max-width: 75rem;
-  height: 100%;
+.react-modal {
+  animation-name: show;
+  animation-duration: 0.35s;
+  animation-timing-function: ease;
+  animation-fill-mode: alternate;
 }
 
-code {
-  display: block;
-  white-space: pre-wrap;
-  padding: 1.2rem 2rem;
-  border-radius: 1rem;
-  background-color: var(--light-gray);
-  font-size: 1.4rem;
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-code span {
-  transition: all 0.3s;
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transition: opacity 0.35s ease;
 }
 
-code span.primary-color {
-  color: var(--primary-color);
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
-code span.secondary-color {
-  color: var(--secondary-color);
-}
-
-code span.dim-color {
-  color: var(--gray);
-}
-
-code span.flash {
-  background-color: var(--flash-color);
-}
-
-details {
-  margin: 1.6rem 0;
-  padding: 0.5rem 2rem 0.5rem 0;
-  border: 1px solid var(--light-gray);
-  border-radius: 1rem;
-}
-
-details :not(summary, span) {
-  margin-left: 2.55rem;
-}
-
-details summary {
-  padding: 1.2rem;
-  cursor: pointer;
-}
-
-p,
-details code {
-  margin-top: 1rem;
-  margin-bottom: 1.4rem;
-}
-
-p {
-  line-height: 2.6rem;
-}
-
-p span.code {
-  font-family: monospace;
-  color: var(--gray);
-}
-
-hr {
-  margin: 4rem 0;
-}
-
-#App .container .welcome h1 {
-  padding-top: 7.5rem;
-  font-size: 2.6rem;
-}
-
-#App .container .demo .contract-container {
+.modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 500px;
+  max-width: 540px;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--white);
+  margin: auto;
+  padding: 2rem 1.5rem;
+  outline: none;
+  border-radius: 0.5rem;
+  z-index: 15;
+  overflow-y: auto;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 
-#App .container .demo .contract-container code {
-  min-width: 42rem;
-  border-radius: 1rem 0 0 1rem;
+.modal-content {
+  width: 100%;
 }
 
-#App .container .demo .contract-container .btns {
+.modal-content-text {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 0 1rem;
-  background-color: var(--gray);
-  border-radius: 0 1rem 1rem 0;
+  align-items: flex-start;
 }
 
-#App .container .demo .contract-container .btns>* {
-  width: 12rem;
+.modal-actions {
+  display: flex;
+  align-self: flex-end;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.modal .modal-actions > button {
+  background: none;
+  color: var(--primary);
+  box-shadow: none;
+  padding: 0.5rem 0;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 2rem 0;
+}
+
+.modal button {
+  background: var(--primary);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 1.25rem 2rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  border-radius: 0.35rem;
+}
+
+.modal .dontate-button {
+  margin: 0 0 1.5rem;
+}
+
+.donation-input-container {
   display: flex;
   align-items: center;
+  margin: 0 0 1rem;
+}
+
+.donation-input-container .eth-value {
+  color: var(--secondary);
+}
+
+.modal .form-control {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.modal .form-control input {
+  font-size: 16px;
+  padding: 0 0 0.5rem;
+  border-bottom: 1px solid var(--secondary);
+  margin-right: 1rem;
+  transition: all 0.35s ease;
+}
+
+.modal .form-control input:focus {
+  border-color: var(--primary);
+}
+
+.modal .donations {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.donations .donation-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 0.75rem;
+}
+
+.donations .donation-list:last-child {
+  margin: 0;
+}
+
+.modal .donations h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 1rem;
+}
+
+/* app-body */
+.app-body {
+  padding: 3rem 2.5rem;
+}
+
+/* app-bar */
+.app-bar {
+  position: static;
+  top: 0;
+  left: 0;
+  height: fit-content;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--gray);
+  gap: 1.25rem;
+  padding: 1rem 2.5rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.appbar-button {
+  display: flex;
   justify-content: center;
-  padding: 1rem 0;
-  background-color: var(--light-gray);
-  border: none;
-  font-size: 1.2rem;
-  font-family: monospace;
+  background-color: var(--white);
+  color: var(--dark);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  padding: 1rem 2rem;
+  border: 1px solid #19191940;
+  border-radius: 5rem;
+  outline: none;
   cursor: pointer;
 }
 
-#App .container .demo .contract-container .btns>*:hover {
-  background-color: var(--dark-gray);
+.appbar-button span {
+  margin: 0 0.5rem 0;
 }
 
-#App .container .demo .contract-container .btns .input-btn input {
-  width: 4rem;
+.appbar-button svg path {
+  fill: var(--dark);
+}
+
+/* card */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.card-container {
+  width: 375px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  border: 1px solid #19191940;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.card-content {
+  margin: 0 0 1.5rem;
+  padding: 0 1rem;
+}
+
+.card-content h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--dark);
+  margin: 0 0 1.5rem;
+}
+
+.card-content p {
+  color: var(--secondary);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card-media {
+  margin: 0 0 2rem;
+  overflow: hidden;
+}
+
+.card-actions {
+  margin: 0 0 2rem;
+  padding: 0 1rem;
+}
+
+.card-actions button {
+  background: var(--gray);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 1.25rem 2rem;
+  border-radius: 0.35rem;
+}
+
+/* create fundraiser */
+.create-fundraiser-container {
+  width: 100%;
+}
+
+.create-fundraiser-container .form {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.create-fundraiser-container .form > * {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-fundraiser-container label {
+  font-weight: 500;
+}
+
+.create-fundraiser-container input {
+  width: 100%;
+  height: 40px;
+  font-size: 15px;
+  padding: 0 0 0.35rem;
+  border-bottom: 1px solid var(--secondary);
+  margin: 0.75rem 0 0;
+  transition: border-color 0.35s ease;
+}
+
+.create-fundraiser-container input:focus {
+  border-color: var(--primary);
+}
+
+.create-fundraiser-container .file-picker {
+  width: 100%;
+  height: 50px;
+  background: var(--gray);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--secondary);
+  border-radius: 0.35rem 0.35rem 0 0;
+  outline: none;
+}
+
+.create-fundraiser-container .file-picker:focus {
+  border-bottom-color: var(--primary);
+}
+
+.create-fundraiser-container button {
+  height: 60px;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 0.35rem;
+}
+
+/* receipt */
+.receipt-header {
+  padding: 0 0 1rem 0;
+  border-bottom: 2px solid var(--gray);
+  margin: 0 0 2.25rem;
+}
+
+.receipt-container {
   text-align: center;
-  font-family: monospace;
-  font-size: 1.2rem;
 }
 
-#App .container footer {
-  padding-bottom: 7.5rem;
+.receipt-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 2rem;
 }
 
-#App .container footer a {
-  display: inline-block;
-  margin: 2rem 1rem 0 0;
+.donation-receipt-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* retry button */
+.retry-btn {
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  background: var(--primary);
+  border-radius: 0.35rem;
+  padding: 1.25rem 1rem;
+}
+
+/* breakpoints */
+@media screen and (max-width: 960px) {
+  .app-body {
+    padding: 2.75rem 1.25rem;
+  }
+
+  .app-bar {
+    padding: 1rem 1.25rem;
+  }
+
+  .cards-container {
+    gap: 1.5rem;
+  }
+
+  .card-container {
+    width: calc(50% - 0.75rem);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .modal {
+    max-width: 95vw;
+    padding: 2rem 0.75rem;
+  }
+
+  .app-body {
+    padding: 2.5rem 0.75rem;
+  }
+
+  .app-bar {
+    padding: 1rem 0.75rem;
+    gap: 1rem;
+  }
+
+  .card-container {
+    width: 100%;
+  }
+
+  .receipt-info {
+    flex-direction: column;
+    padding: 1rem;
+  }
 }
