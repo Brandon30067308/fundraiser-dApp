@@ -1,40 +1,65 @@
-# React Truffle Box
+## About This Project
 
-This box comes with everything you need to start using Truffle to write, compile, test, and deploy smart contracts, and interact with them from a React app.
+This is a decentralized Fundraiser application built with React.js and Solidity.
 
-## Installation
+### Built With
 
-First ensure you are in an empty directory.
+- React.js
+- Solidity
+- CSS
 
-Run the `unbox` command using 1 of 2 ways.
+## Setup
+
+To get a local copy of this project up and running follow these steps.
+
+### Prerequisites
+
+- yarn
+  ```sh
+  npm install yarn@latest -g
+  ```
+- Install Ganache [here](https://github.com/trufflesuite/ganache-ui/tags)
+- Create a free Infura account [here](https://app.infura.io/register)
+- Create an IPFS project on your Infura account
+- Rename the `.env.example` file in the root to `.env`
+- Update the enviroment variables (PROJECT_ID, API_KEY_SECRET, IPFS_API_ENDPOINT) with the credentials from your Infura IPFS project
+- Setup a personal Ethereum blockchain with Ganache
+- Update the `networks` property in the `truffle-config.js` file to match the network configurations of the personal blockchain
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/Brandon30067308/fundraiser-dApp.git
+   ```
+2. Install NPM packages
+   ```sh
+   yarn install
+   cd client && yarn install
+   ```
+
+### Run Local Blockchain and Deploy Contracts
+
+1. Spin up a console to interact with the contracts
+
+   ```sh
+      truffle develop
+   ```
+
+2. Compile contracts
+
+   ```sh
+      compile
+   ```
+
+3. Deploy changes to the local blockchain
+
+   ```sh
+      migrate
+   ```
+
+### Run React Client
 
 ```sh
-# Install Truffle globally and run `truffle unbox`
-$ npm install -g truffle
-$ truffle unbox react
+cd client && yarn start
 ```
-
-```sh
-# Alternatively, run `truffle unbox` via npx
-$ npx truffle unbox react
-```
-
-Start the react dev server.
-
-```sh
-$ cd client
-$ npm start
-  Starting the development server...
-```
-
-From there, follow the instructions on the hosted React app. It will walk you through using Truffle and Ganache to deploy the `SimpleStorage` contract, making calls to it, and sending transactions to change the contract's state.
-
-## FAQ
-
-- __How do I use this with Ganache (or any other network)?__
-
-  The Truffle project is set to deploy to Ganache by default. If you'd like to change this, it's as easy as modifying the Truffle config file! Check out [our documentation on adding network configurations](https://trufflesuite.com/docs/truffle/reference/configuration/#networks). From there, you can run `truffle migrate` pointed to another network, restart the React dev server, and see the change take place.
-
-- __Where can I find more resources?__
-
-  This Box is a sweet combo of [Truffle](https://trufflesuite.com) and [Create React App](https://create-react-app.dev). Either one would be a great place to start!
