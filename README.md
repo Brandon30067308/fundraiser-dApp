@@ -2,12 +2,6 @@
 
 This is a decentralized Fundraiser application built with React.js and Solidity.
 
-### Built With
-
-- React.js
-- Solidity
-- CSS
-
 ## Setup
 
 To get a local copy of this project up and running follow these steps.
