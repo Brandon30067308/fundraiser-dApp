@@ -17,7 +17,6 @@ const authorization =
   );
 
 const NewFundraiser = () => {
-  const [labelWidth, setLabelWidth] = useState(0);
   const [name, setFundraiserName] = useState(null);
   const [website, setFundraiserWebsite] = useState(null);
   const [image, setImage] = useState(null);
@@ -32,7 +31,7 @@ const NewFundraiser = () => {
   const web3 = useContext(Web3Context);
   let [ipfs, setIpfs] = useState(null);
 
-  const [openFileSelector, { filesContent, plainFiles }] = useFilePicker({
+  const [openFileSelector, { filesContent }] = useFilePicker({
     accept: "image/*",
     multiple: false,
     readAs: "ArrayBuffer",
@@ -50,14 +49,14 @@ const NewFundraiser = () => {
 
   useEffect(() => {
     try {
-      const ipfs = create({
-        url: "https://ipfs.infura.io:5001/api/v0",
-        headers: {
-          authorization,
-        },
-      });
-
-      setIpfs(ipfs);
+      setIpfs(
+        create({
+          url: "https://ipfs.infura.io:5001/api/v0",
+          headers: {
+            authorization,
+          },
+        })
+      );
     } catch (err) {
       console.error("IPFS error ", err);
       toast.error("IPFS connection error");
